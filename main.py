@@ -5,8 +5,8 @@ from flask import Flask
 
 def get_currencies_list():
     url = 'https://www.cbr-xml-daily.ru/daily_json.js'
-    data = requests.get(url).json()
-    currencies = list(data['Valute'].values())
+    data = requests.get(url).json() # Загружаю данные сразу в json формате
+    currencies = list(data['Valute'].values()) # Изменил название переменной на более подходящее
     return currencies
 
 
@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 def create_html(currencies):
     date = datetime.now().date()
-    date = date.strftime("%A, %-d %B %Y")
+    date = date.strftime("%A, %-d %B %Y") # Добавил отображение текущей даты на страницу
     text = f'<h1>Курс валют за {date}</h1>'
     text += '<table>'
     text += '<tr>'
